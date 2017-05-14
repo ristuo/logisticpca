@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 2.6)
+add_definitions(-std=c++11)
+project(logistipca)
+file(GLOB_RECURSE sources src/*.cpp)
+include_directories(include)
+find_library(ARMA_LIB armadillo)
+add_executable(main ${sources})
+target_link_libraries(main "${ARMA_LIB}")
+add_definitions("-D DEBUG")
+add_custom_target(run ./main depends default_target)
+
